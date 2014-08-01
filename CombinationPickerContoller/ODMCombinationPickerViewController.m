@@ -151,47 +151,33 @@
     
     cell.imageView.image = thumbnail;
     
-    if (currentSelectedIndex == nil && [indexPath isEqual:previousSelectedIndex]) {
-        
-        [cell setHightlightBackground:NO withAimate:YES];
-        
-    } else {
-        
-        [cell setHightlightBackground:[indexPath isEqual:currentSelectedIndex] withAimate:NO];
-
-    }
+    BOOL isSelected = [indexPath isEqual:currentSelectedIndex];
+    BOOL isDeselectedShouldAnimate = currentSelectedIndex == nil && [indexPath isEqual:previousSelectedIndex];
     
+    [cell setHightlightBackground:isSelected withAimate:isDeselectedShouldAnimate];
+
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 && [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
             
         previousSelectedIndex = nil;
         currentSelectedIndex = nil;
 
-        if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
-            
-            NSLog(@"Camera not support");
-            
-        } else if (self.cameraController != nil) {
+        if (self.cameraController != nil) {
             
             [self presentViewController:self.cameraController animated:YES completion:NULL];
             
         } else {
             
-            
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentViewController:picker animated:YES completion:NULL];
-        
             
         }
-        
-
-
         
     } else {
 
@@ -206,7 +192,6 @@
             currentSelectedIndex = indexPath;
             
         }
-        
         
     }
     

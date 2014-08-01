@@ -22,6 +22,10 @@
 
 - (void)setHightlightBackground:(BOOL)isSelected withAimate:(BOOL)animate
 {
+    [self.imageView.layer removeAllAnimations];
+    [self.bgView.layer removeAllAnimations];
+    [self.layer removeAllAnimations];
+    
     if (isSelected == YES) {
         
         [self setHightlightBackground];
@@ -37,9 +41,10 @@
 {
     
     if (animate) {
+        
         [UIView animateWithDuration:0.2f
                               delay:0.0f
-                            options:UIViewAnimationOptionCurveEaseInOut
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              
                              [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
@@ -67,11 +72,10 @@
 
     self.bgView.layer.borderWidth = 1.0f;
     self.bgView.layer.borderColor = [UIColor greenColor].CGColor;
-   
     
     [UIView animateWithDuration:0.2f
                           delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseInOut
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          
                          [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
