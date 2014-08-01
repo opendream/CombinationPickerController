@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50FBC6C8F58A43428C8C5764 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E185420894B76B6F4E232 /* libPods.a */; };
 		8480B59919889B900074F0A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59819889B900074F0A1 /* Foundation.framework */; };
 		8480B59B19889B900074F0A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59A19889B900074F0A1 /* CoreGraphics.framework */; };
 		8480B59D19889B900074F0A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59C19889B900074F0A1 /* UIKit.framework */; };
@@ -14,13 +15,22 @@
 		8480B5A519889B900074F0A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5A419889B900074F0A1 /* main.m */; };
 		8480B5A919889B900074F0A1 /* ODMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5A819889B900074F0A1 /* ODMAppDelegate.m */; };
 		8480B5AC19889B900074F0A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8480B5AA19889B900074F0A1 /* Main.storyboard */; };
-		8480B5AF19889B900074F0A1 /* ODMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5AE19889B900074F0A1 /* ODMViewController.m */; };
+		8480B5AF19889B900074F0A1 /* ODMCombinationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */; };
 		8480B5B119889B900074F0A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8480B5B019889B900074F0A1 /* Images.xcassets */; };
 		8480B5B819889B900074F0A1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B5B719889B900074F0A1 /* XCTest.framework */; };
 		8480B5B919889B900074F0A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59819889B900074F0A1 /* Foundation.framework */; };
 		8480B5BA19889B900074F0A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59C19889B900074F0A1 /* UIKit.framework */; };
 		8480B5C219889B900074F0A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8480B5C019889B900074F0A1 /* InfoPlist.strings */; };
 		8480B5C419889B900074F0A1 /* CombinationPickerContollerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5C319889B900074F0A1 /* CombinationPickerContollerTests.m */; };
+		8480B5CF1988A02A0074F0A1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B5CE1988A02A0074F0A1 /* AssetsLibrary.framework */; };
+		849DF4D2198A231F00EE06A4 /* ODMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DF4D1198A231F00EE06A4 /* ODMViewController.m */; };
+		849DF4D5198A2CDB00EE06A4 /* ODMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */; };
+		849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */; };
+		84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A0906E198B4D9E006274CF /* IconImages.xcassets */; };
+		84FE55961988D91E0034D932 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55951988D91E0034D932 /* OpenGLES.framework */; };
+		84FE55981988D93E0034D932 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55971988D93E0034D932 /* QuartzCore.framework */; };
+		84FE559A1988D9440034D932 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55991988D9440034D932 /* CoreMedia.framework */; };
+		84FE559C1988D94C0034D932 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE559B1988D94C0034D932 /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +55,27 @@
 		8480B5A719889B900074F0A1 /* ODMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMAppDelegate.h; sourceTree = "<group>"; };
 		8480B5A819889B900074F0A1 /* ODMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ODMAppDelegate.m; sourceTree = "<group>"; };
 		8480B5AB19889B900074F0A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8480B5AD19889B900074F0A1 /* ODMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMViewController.h; sourceTree = "<group>"; };
-		8480B5AE19889B900074F0A1 /* ODMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ODMViewController.m; sourceTree = "<group>"; };
+		8480B5AD19889B900074F0A1 /* ODMCombinationPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMCombinationPickerViewController.h; sourceTree = "<group>"; };
+		8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ODMCombinationPickerViewController.m; sourceTree = "<group>"; };
 		8480B5B019889B900074F0A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8480B5B619889B900074F0A1 /* CombinationPickerContollerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombinationPickerContollerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480B5B719889B900074F0A1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8480B5BF19889B900074F0A1 /* CombinationPickerContollerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CombinationPickerContollerTests-Info.plist"; sourceTree = "<group>"; };
 		8480B5C119889B900074F0A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8480B5C319889B900074F0A1 /* CombinationPickerContollerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CombinationPickerContollerTests.m; sourceTree = "<group>"; };
+		8480B5CE1988A02A0074F0A1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		849DF4D0198A231F00EE06A4 /* ODMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODMViewController.h; sourceTree = "<group>"; };
+		849DF4D1198A231F00EE06A4 /* ODMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODMViewController.m; sourceTree = "<group>"; };
+		849DF4D3198A2CDB00EE06A4 /* ODMCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODMCollectionViewCell.h; sourceTree = "<group>"; };
+		849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODMCollectionViewCell.m; sourceTree = "<group>"; };
+		849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCollectionViewCell.xib; sourceTree = "<group>"; };
+		84A0906E198B4D9E006274CF /* IconImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconImages.xcassets; sourceTree = "<group>"; };
+		84FE55951988D91E0034D932 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		84FE55971988D93E0034D932 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		84FE55991988D9440034D932 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		84FE559B1988D94C0034D932 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CC6A12A5F72C4FAE86216A54 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		EA1E185420894B76B6F4E232 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +83,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FE559C1988D94C0034D932 /* CoreVideo.framework in Frameworks */,
+				84FE559A1988D9440034D932 /* CoreMedia.framework in Frameworks */,
+				84FE55981988D93E0034D932 /* QuartzCore.framework in Frameworks */,
+				84FE55961988D91E0034D932 /* OpenGLES.framework in Frameworks */,
+				8480B5CF1988A02A0074F0A1 /* AssetsLibrary.framework in Frameworks */,
 				8480B59B19889B900074F0A1 /* CoreGraphics.framework in Frameworks */,
 				8480B59D19889B900074F0A1 /* UIKit.framework in Frameworks */,
 				8480B59919889B900074F0A1 /* Foundation.framework in Frameworks */,
+				50FBC6C8F58A43428C8C5764 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +111,12 @@
 		8480B58C19889B900074F0A1 = {
 			isa = PBXGroup;
 			children = (
+				8480B5CD19889D190074F0A1 /* CombinationPicker */,
 				8480B59E19889B900074F0A1 /* CombinationPickerContoller */,
 				8480B5BD19889B900074F0A1 /* CombinationPickerContollerTests */,
 				8480B59719889B900074F0A1 /* Frameworks */,
 				8480B59619889B900074F0A1 /* Products */,
+				CC6A12A5F72C4FAE86216A54 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +132,16 @@
 		8480B59719889B900074F0A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FE559B1988D94C0034D932 /* CoreVideo.framework */,
+				84FE55991988D9440034D932 /* CoreMedia.framework */,
+				84FE55971988D93E0034D932 /* QuartzCore.framework */,
+				84FE55951988D91E0034D932 /* OpenGLES.framework */,
+				8480B5CE1988A02A0074F0A1 /* AssetsLibrary.framework */,
 				8480B59819889B900074F0A1 /* Foundation.framework */,
 				8480B59A19889B900074F0A1 /* CoreGraphics.framework */,
 				8480B59C19889B900074F0A1 /* UIKit.framework */,
 				8480B5B719889B900074F0A1 /* XCTest.framework */,
+				EA1E185420894B76B6F4E232 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,8 +152,13 @@
 				8480B5A719889B900074F0A1 /* ODMAppDelegate.h */,
 				8480B5A819889B900074F0A1 /* ODMAppDelegate.m */,
 				8480B5AA19889B900074F0A1 /* Main.storyboard */,
-				8480B5AD19889B900074F0A1 /* ODMViewController.h */,
-				8480B5AE19889B900074F0A1 /* ODMViewController.m */,
+				849DF4D0198A231F00EE06A4 /* ODMViewController.h */,
+				849DF4D1198A231F00EE06A4 /* ODMViewController.m */,
+				8480B5AD19889B900074F0A1 /* ODMCombinationPickerViewController.h */,
+				8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */,
+				849DF4D3198A2CDB00EE06A4 /* ODMCollectionViewCell.h */,
+				849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */,
+				849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */,
 				8480B5B019889B900074F0A1 /* Images.xcassets */,
 				8480B59F19889B900074F0A1 /* Supporting Files */,
 			);
@@ -126,6 +168,7 @@
 		8480B59F19889B900074F0A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84A0906D198B4CFB006274CF /* images */,
 				8480B5A019889B900074F0A1 /* CombinationPickerContoller-Info.plist */,
 				8480B5A119889B900074F0A1 /* InfoPlist.strings */,
 				8480B5A419889B900074F0A1 /* main.m */,
@@ -152,6 +195,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8480B5CD19889D190074F0A1 /* CombinationPicker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CombinationPicker;
+			sourceTree = "<group>";
+		};
+		84A0906D198B4CFB006274CF /* images */ = {
+			isa = PBXGroup;
+			children = (
+				84A0906E198B4D9E006274CF /* IconImages.xcassets */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +217,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8480B5C719889B900074F0A1 /* Build configuration list for PBXNativeTarget "CombinationPickerContoller" */;
 			buildPhases = (
+				41EAD3642E1A49F1A92C702C /* Check Pods Manifest.lock */,
 				8480B59119889B900074F0A1 /* Sources */,
 				8480B59219889B900074F0A1 /* Frameworks */,
 				8480B59319889B900074F0A1 /* Resources */,
+				2013B0A23E6B4C919C987236 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,6 +289,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */,
+				84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */,
 				8480B5B119889B900074F0A1 /* Images.xcassets in Resources */,
 				8480B5A319889B900074F0A1 /* InfoPlist.strings in Resources */,
 				8480B5AC19889B900074F0A1 /* Main.storyboard in Resources */,
@@ -245,14 +307,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2013B0A23E6B4C919C987236 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41EAD3642E1A49F1A92C702C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8480B59119889B900074F0A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8480B5A519889B900074F0A1 /* main.m in Sources */,
-				8480B5AF19889B900074F0A1 /* ODMViewController.m in Sources */,
+				849DF4D2198A231F00EE06A4 /* ODMViewController.m in Sources */,
+				8480B5AF19889B900074F0A1 /* ODMCombinationPickerViewController.m in Sources */,
 				8480B5A919889B900074F0A1 /* ODMAppDelegate.m in Sources */,
+				849DF4D5198A2CDB00EE06A4 /* ODMCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +471,7 @@
 		};
 		8480B5C819889B900074F0A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC6A12A5F72C4FAE86216A54 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -387,6 +485,7 @@
 		};
 		8480B5C919889B900074F0A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC6A12A5F72C4FAE86216A54 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -457,6 +556,7 @@
 				8480B5C919889B900074F0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8480B5CA19889B900074F0A1 /* Build configuration list for PBXNativeTarget "CombinationPickerContollerTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +565,7 @@
 				8480B5CC19889B900074F0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
