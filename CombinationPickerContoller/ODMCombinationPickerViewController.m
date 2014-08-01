@@ -9,6 +9,7 @@
 #import "ODMCombinationPickerViewController.h"
 #import "ODMCollectionViewCell.h"
 #import "KxMenu.h"
+#import "ODMAppDelegate.h"
 
 @interface ODMCombinationPickerViewController ()
 
@@ -27,19 +28,13 @@
     if (self.cameraImage == nil) {
         self.cameraImage = [UIImage imageNamed:@"camera-icon"];
     }
-    
+
     if (!previousBarStyle) {
         previousBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-            [self setNeedsStatusBarAppearanceUpdate];
-            
-        }];
     }
-    
-    [self setNeedsStatusBarAppearanceUpdate];
+
+    [self fadeStatusBar];
+    [self setLightStatusBar];
     
     
     UINib *cellNib = [UINib nibWithNibName:
@@ -107,6 +102,8 @@
     
     ALAssetsFilter *onlyPhotosFilter = [ALAssetsFilter allPhotos];
     [self.assetsGroup setAssetsFilter:onlyPhotosFilter];
+    
+    [self checkDoneButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -114,13 +111,6 @@
     [super viewDidAppear:animated];
     [self.collectionView reloadData];
 }
-
-- (void)dealloc
-{
-    [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
-    [self setNeedsStatusBarAppearanceUpdate];
-}
-
 
 #pragma mark - UICollectionViewDelegate
 
@@ -288,6 +278,9 @@
 {
     if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
+        [self fadeStatusBar];
+        [self setBackStatusBar];
+
         [self.delegate imagePickerController:self didFinishPickingAsset:self.assets[currentSelectedIndex.row]];
     }
 }
@@ -296,6 +289,9 @@
 {
     if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
+        [self fadeStatusBar];
+        [self setBackStatusBar];
+
         UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         [library writeImageToSavedPhotosAlbum:originImage.CGImage
@@ -318,12 +314,36 @@
 
 - (IBAction)cancle:(id)sender
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
-    [self setNeedsStatusBarAppearanceUpdate];
-    
     if ([self.delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
+
+        [self fadeStatusBar];
+        [self setBackStatusBar];
+        
         [self.delegate imagePickerControllerDidCancel:self];
     }
+}
+
+#pragma mark - Status bar
+
+- (void)fadeStatusBar
+{
+    if (![[UIApplication sharedApplication] isStatusBarHidden]) {
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+}
+
+- (void)setLightStatusBar
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)setBackStatusBar
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 @end

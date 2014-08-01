@@ -27,6 +27,7 @@
 		849DF4D5198A2CDB00EE06A4 /* ODMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */; };
 		849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */; };
 		84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A0906E198B4D9E006274CF /* IconImages.xcassets */; };
+		84A09071198BCFE5006274CF /* ODMCombinationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */; };
 		84FE55961988D91E0034D932 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55951988D91E0034D932 /* OpenGLES.framework */; };
 		84FE55981988D93E0034D932 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55971988D93E0034D932 /* QuartzCore.framework */; };
 		84FE559A1988D9440034D932 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55991988D9440034D932 /* CoreMedia.framework */; };
@@ -70,6 +71,7 @@
 		849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODMCollectionViewCell.m; sourceTree = "<group>"; };
 		849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCollectionViewCell.xib; sourceTree = "<group>"; };
 		84A0906E198B4D9E006274CF /* IconImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconImages.xcassets; sourceTree = "<group>"; };
+		84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCombinationPickerViewController.xib; sourceTree = "<group>"; };
 		84FE55951988D91E0034D932 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		84FE55971988D93E0034D932 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84FE55991988D9440034D932 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -156,6 +158,7 @@
 				849DF4D1198A231F00EE06A4 /* ODMViewController.m */,
 				8480B5AD19889B900074F0A1 /* ODMCombinationPickerViewController.h */,
 				8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */,
+				84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */,
 				849DF4D3198A2CDB00EE06A4 /* ODMCollectionViewCell.h */,
 				849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */,
 				849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */,
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */,
+				84A09071198BCFE5006274CF /* ODMCombinationPickerViewController.xib in Resources */,
 				84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */,
 				8480B5B119889B900074F0A1 /* Images.xcassets in Resources */,
 				8480B5A319889B900074F0A1 /* InfoPlist.strings in Resources */,
