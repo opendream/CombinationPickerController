@@ -14,7 +14,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic) BOOL isSelected;
 
-- (void)markSelected:(BOOL)isSelected;
-- (void)setHightlightBackground:(BOOL)isSelected;
+- (void)setHightlightBackground:(BOOL)isSelected withAimate:(BOOL)animate;
+- (void)setNormalBackground:(BOOL)animate;
+- (void)setHightlightBackground;
 
 @end

@@ -43,8 +43,10 @@
 {
     
     if ([[segue identifier] isEqualToString:@"pickerSegue"]) {
+        
         ODMCombinationPickerViewController *vc = [segue destinationViewController];
         [vc setDelegate:self];
+        
     }
 
 }
@@ -58,12 +60,17 @@
     
 }
 
-- (void)imagePickerController:(ODMCombinationPickerViewController *)picker didFinishPickingImage:(UIImage *)image
+- (void)imagePickerController:(ODMCombinationPickerViewController *)picker didFinishPickingAsset:(ALAsset *)asset
 {
-    self.selectedImageView.image = image;
+    
+    ALAssetRepresentation *rep = [asset defaultRepresentation];
+    CGImageRef iref = [rep fullResolutionImage];
+    
+    self.selectedImageView.image = [UIImage imageWithCGImage:iref];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
 
 @end

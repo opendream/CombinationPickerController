@@ -16,28 +16,79 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _isSelected = NO;
     }
     return self;
 }
 
-- (void)markSelected:(BOOL)isSelected
-{
-    self.isSelected = isSelected;
-}
-
-- (void)setHightlightBackground:(BOOL)isSelected
+- (void)setHightlightBackground:(BOOL)isSelected withAimate:(BOOL)animate
 {
     if (isSelected == YES) {
         
-        self.bgView.layer.borderWidth = 0.8;
-        self.bgView.layer.borderColor = [UIColor greenColor].CGColor;
+        [self setHightlightBackground];
         
     } else {
 
-        self.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+        [self setNormalBackground:animate];
         
     }
+}
+
+- (void)setNormalBackground:(BOOL)animate
+{
+    
+    if (animate) {
+        [UIView animateWithDuration:0.2f
+                              delay:0.0f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             
+                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
+                             
+                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
+                             
+                         }
+                         completion:^(BOOL finished){
+                             
+                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
+                             
+                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
+                             
+                         }
+         ];
+
+    }
+    
+    self.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+    
+}
+
+- (void)setHightlightBackground
+{
+
+    self.bgView.layer.borderWidth = 1.0f;
+    self.bgView.layer.borderColor = [UIColor greenColor].CGColor;
+   
+    
+    [UIView animateWithDuration:0.2f
+                          delay:0.0f
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         
+                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
+                         
+                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
+
+                     }
+                     completion:^(BOOL finished){
+                         
+                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
+                         
+                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
+
+                     }
+     ];
+    
+    
 }
 
 @end

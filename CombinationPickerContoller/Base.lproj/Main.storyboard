@@ -148,7 +148,7 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EUk-DM-lFz">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ODMCombinationPickerViewController" id="EUk-DM-lFz">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="4"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
@@ -177,7 +177,8 @@
                         <outlet property="collectionView" destination="Yxg-8G-KXf" id="Zsp-If-3ug"/>
                         <outlet property="doneButton" destination="ur9-ev-SbQ" id="kio-r6-L0Z"/>
                         <outlet property="navagationTitleButton" destination="fJB-3u-3vk" id="sBc-CR-LPo"/>
-                        <segue destination="J9d-WC-szH" kind="modal" identifier="" id="apN-qF-kFv"/>
+                        <outlet property="navigationView" destination="9nl-Nh-BaL" id="Gcx-j6-oKQ"/>
+                        <segue destination="J9d-WC-szH" kind="modal" identifier="pickerSegue2" id="apN-qF-kFv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keX-xU-PAY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,20 +14,32 @@
 
 @end
 
-static NSString *CellIdentifier = @"photoCell";
-
 @implementation ODMCombinationPickerViewController
+
+#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    previousBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self setNeedsStatusBarAppearanceUpdate];
-    
     [self.navigationController setToolbarHidden:YES animated:NO];
+
+    if (self.cameraImage == nil) {
+        self.cameraImage = [UIImage imageNamed:@"camera-icon"];
+    }
+    
+    if (!previousBarStyle) {
+        previousBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            [self setNeedsStatusBarAppearanceUpdate];
+            
+        }];
+    }
+    
+    [self setNeedsStatusBarAppearanceUpdate];
     
     
     UINib *cellNib = [UINib nibWithNibName:
@@ -58,8 +70,13 @@ static NSString *CellIdentifier = @"photoCell";
         if (result) {
             [self.assets insertObject:result atIndex:0];
         }
+        
+        if ([self.assetsGroup numberOfAssets] - 1 == index) {
+            
+            [self.collectionView reloadData];
+            
+        }
     };
-    
     
     ALAssetsLibraryGroupsEnumerationResultsBlock listGroupBlock = ^(ALAssetsGroup *group, BOOL *stop) {
         
@@ -67,36 +84,33 @@ static NSString *CellIdentifier = @"photoCell";
         [group setAssetsFilter:onlyPhotosFilter];
         if ([group numberOfAssets] > 0)
         {
-            if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:@"Camera Roll"]) {
-                
-                self.assetsGroup = group;
-                
-            }
             
             [self.groups addObject:group];
-            [self.collectionView reloadData];
+            
+            self.assetsGroup = [self.groups firstObject];
             [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
-            [self.assets insertObject:[UIImage imageNamed:@"camera-icon"] atIndex:0];
-
+            
+            [self addImageFirstRow];
+            
+            [self setNavigationTitle:[[self.groups firstObject] valueForProperty:ALAssetsGroupPropertyName]];
+            
         }
         
     };
     
-    
     // enumerate only photos
     NSUInteger groupTypes = ALAssetsGroupAlbum | ALAssetsGroupEvent | ALAssetsGroupFaces | ALAssetsGroupSavedPhotos | ALAssetsGroupPhotoStream;
     
-    [self.assetsLibrary enumerateGroupsWithTypes:groupTypes usingBlock:listGroupBlock failureBlock:nil];
+    [self.assetsLibrary enumerateGroupsWithTypes:groupTypes usingBlock:listGroupBlock failureBlock:^(NSError *error) {
+        NSLog(@"Can not get group");
+    }];
     
-    self.title = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyName];
-
     ALAssetsFilter *onlyPhotosFilter = [ALAssetsFilter allPhotos];
     [self.assetsGroup setAssetsFilter:onlyPhotosFilter];
-
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self.collectionView reloadData];
 }
@@ -110,8 +124,8 @@ static NSString *CellIdentifier = @"photoCell";
 
 #pragma mark - UICollectionViewDelegate
 
-- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
+{
     return self.assets.count;
 }
 
@@ -119,7 +133,6 @@ static NSString *CellIdentifier = @"photoCell";
     
     ODMCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    // load the asset for this cell
     ALAsset *asset;
     CGImageRef thumbnailImageRef;
     UIImage *thumbnail;
@@ -137,34 +150,60 @@ static NSString *CellIdentifier = @"photoCell";
     }
     
     cell.imageView.image = thumbnail;
-    [cell setHightlightBackground:[indexPath isEqual:selectedIndex]];
+    
+    if (currentSelectedIndex == nil && [indexPath isEqual:previousSelectedIndex]) {
+        
+        [cell setHightlightBackground:NO withAimate:YES];
+        
+    } else {
+        
+        [cell setHightlightBackground:[indexPath isEqual:currentSelectedIndex] withAimate:NO];
+
+    }
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"indexPath %@", indexPath);
     if (indexPath.row == 0) {
-
-        selectedIndex = nil;
-
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        [self presentViewController:picker animated:YES completion:NULL];
-        
-    } else {
-
-        
-        if ([selectedIndex isEqual:indexPath] ) {
             
-            selectedIndex = nil;
+        previousSelectedIndex = nil;
+        currentSelectedIndex = nil;
+
+        if (![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+            
+            NSLog(@"Camera not support");
+            
+        } else if (self.cameraController != nil) {
+            
+            [self presentViewController:self.cameraController animated:YES completion:NULL];
             
         } else {
             
-            selectedIndex = indexPath;
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:NULL];
+        
+            
+        }
+        
+
+
+        
+    } else {
+
+        previousSelectedIndex = currentSelectedIndex;
+        
+        if ([currentSelectedIndex isEqual:indexPath] ) {
+            
+            currentSelectedIndex = nil;
+            
+        } else {
+            
+            currentSelectedIndex = indexPath;
             
         }
         
@@ -173,30 +212,6 @@ static NSString *CellIdentifier = @"photoCell";
     
     [self.collectionView reloadData];
     [self checkDoneButton];
-
-    
-
-}
-
-- (IBAction)showMenu:(UIView *)sender
-{
-    
-    NSMutableArray *menuItems = [[NSMutableArray alloc] init];
-
-    for (ALAssetsGroup *group in self.groups) {
-        
-        [menuItems addObject:[KxMenuItem menuItem:[group valueForProperty:ALAssetsGroupPropertyName]
-                                                     image:nil
-                                                    target:self
-                                                    action:@selector(changeGroup:)]];
-    }
-    
-    if (menuItems.count) {
-        [KxMenu showMenuInView:self.view
-                      fromRect:sender.frame
-                     menuItems:menuItems];
-    }
-
 }
 
 - (void)changeGroup:(KxMenuItem *)menu
@@ -221,21 +236,37 @@ static NSString *CellIdentifier = @"photoCell";
             }
             
             [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
-            [self.assets insertObject:[UIImage imageNamed:@"camera-icon"] atIndex:0];
+
+            [self addImageFirstRow];
             
             [self.collectionView reloadData];
             
-            [self.navagationTitleButton setTitle:[NSString stringWithFormat:@"%@ ▾", [menu title]] forState:UIControlStateNormal];
+            [self setNavigationTitle:[menu title]];
         }
     }
+    
+    currentSelectedIndex = nil;
 }
 
 
-#pragma marl -
+- (void)addImageFirstRow
+{
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        
+        [self.assets insertObject:self.cameraImage atIndex:0];
+        
+    }
+}
+
+- (void)setNavigationTitle:(NSString *)title
+{
+    [self.navagationTitleButton setTitle:[NSString stringWithFormat:@"%@ ▾", title] forState:UIControlStateNormal];
+
+}
 
 - (void)checkDoneButton
 {
-    if (selectedIndex != nil) {
+    if (currentSelectedIndex != nil) {
         
         [self.doneButton setEnabled:YES];
         
@@ -248,26 +279,54 @@ static NSString *CellIdentifier = @"photoCell";
 
 #pragma mark - action
 
+- (IBAction)showMenu:(UIView *)sender
+{
+    NSMutableArray *menuItems = [[NSMutableArray alloc] init];
+    
+    for (ALAssetsGroup *group in self.groups) {
+        
+        [menuItems addObject:[KxMenuItem menuItem:[group valueForProperty:ALAssetsGroupPropertyName]
+                                            image:nil
+                                           target:self
+                                           action:@selector(changeGroup:)]];
+    }
+    
+    if (menuItems.count) {
+        [KxMenu showMenuInView:self.view
+                      fromRect:sender.frame
+                     menuItems:menuItems];
+    }
+}
+
+
 - (IBAction)done:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingImage:)]) {
+    if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
-        ALAsset *asset = self.assets[selectedIndex.row];
-        ALAssetRepresentation *rep = [asset defaultRepresentation];
-        CGImageRef iref = [rep fullResolutionImage];
-        
-        [self.delegate imagePickerController:self didFinishPickingImage:[UIImage imageWithCGImage:iref]];
+        [self.delegate imagePickerController:self didFinishPickingAsset:self.assets[currentSelectedIndex.row]];
     }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 {
-    
-    if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingImage:)]) {
+    if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
         UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-        [self.delegate imagePickerController:self didFinishPickingImage:originImage];
-        
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [library writeImageToSavedPhotosAlbum:originImage.CGImage
+                                     metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+                              completionBlock:^(NSURL *assetURL, NSError *error) {
+                                  
+                                  [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                                      [self.delegate imagePickerController:self didFinishPickingAsset:asset];
+
+                                  } failureBlock:^(NSError *error) {
+                                      
+                                      NSLog(@"error couldn't get photo");
+                                      
+                                  }];
+                                  
+                              }];
     }
 
 }
