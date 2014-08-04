@@ -9,7 +9,6 @@
 #import "ODMCombinationPickerViewController.h"
 #import "ODMCollectionViewCell.h"
 #import "KxMenu.h"
-#import "ODMAppDelegate.h"
 
 @interface ODMCombinationPickerViewController ()
 
