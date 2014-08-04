@@ -9,13 +9,13 @@ CombinationPickerController is image picker use uicollection view.
  
 Use cocoapods
   
-  pod 'CombinationPickerController'
+    pod 'CombinationPickerController'
 
 How to use
 
 Add delegate 
 
-  <ODMCombinationPickerViewControllerDelegate>
+    <ODMCombinationPickerViewControllerDelegate>
 
 Create and present ODMCombinationPickerViewController
 
@@ -26,14 +26,14 @@ Create and present ODMCombinationPickerViewController
 Delegate function
 
 
-  - (void)imagePickerController:(ODMCombinationPickerViewController *)picker didFinishPickingAsset:(ALAsset *)asset;
-  
-  - (void)imagePickerControllerDidCancel:(ODMCombinationPickerViewController *)picker;
+    - (void)imagePickerController:(ODMCombinationPickerViewController *)picker didFinishPickingAsset:(ALAsset *)asset;
+
+    - (void)imagePickerControllerDidCancel:(ODMCombinationPickerViewController *)picker;
 
 
 Custom camera controller
 
-  YourCameraController *cameraController = [YourCameraController new]; 
-  
-  [vc setCameraController:cameraController];
+    YourCameraController *cameraController = [YourCameraController new]; 
+    
+    [vc setCameraController:cameraController];
 
