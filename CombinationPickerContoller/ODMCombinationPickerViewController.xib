@@ -4,13 +4,117 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ODMCombinationPickerViewController">
+            <connections>
+                <outlet property="cancelButton" destination="WcQ-fW-JHS" id="zU7-BI-7om"/>
+                <outlet property="collectionView" destination="Eth-sw-4ZK" id="fyA-nR-fIH"/>
+                <outlet property="doneButton" destination="bkN-s0-JSJ" id="6Sd-Ki-FfN"/>
+                <outlet property="navagationTitleButton" destination="NXc-j5-7LX" id="egH-Rg-DRX"/>
+                <outlet property="navigationView" destination="pgt-ON-nkr" id="CJH-1C-PWF"/>
+                <outlet property="view" destination="zjg-3h-buS" id="kc3-PG-cIJ"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="zjg-3h-buS">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgt-ON-nkr">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXc-j5-7LX">
+                            <rect key="frame" x="70" y="25" width="180" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Camera Roll ▾">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="eyc-if-b8W"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcQ-fW-JHS">
+                            <rect key="frame" x="20" y="27" width="48" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="X5q-OH-3FP"/>
+                            </constraints>
+                            <state key="normal" title="Cancle">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancle:" destination="-1" eventType="touchUpInside" id="RHg-vO-TK2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkN-s0-JSJ">
+                            <rect key="frame" x="263" y="27" width="37" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="37" id="n9M-f7-1iE"/>
+                            </constraints>
+                            <state key="normal" title="Done">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="done:" destination="-1" eventType="touchUpInside" id="nBg-7x-KNo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="NXc-j5-7LX" secondAttribute="centerX" id="5qD-Il-Q9n"/>
+                        <constraint firstItem="NXc-j5-7LX" firstAttribute="centerY" secondItem="WcQ-fW-JHS" secondAttribute="centerY" id="CRU-Dw-SEC"/>
+                        <constraint firstItem="bkN-s0-JSJ" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="top" constant="27" id="H5S-ui-qET"/>
+                        <constraint firstAttribute="bottom" secondItem="WcQ-fW-JHS" secondAttribute="bottom" constant="7" id="HsA-er-Fd4"/>
+                        <constraint firstItem="NXc-j5-7LX" firstAttribute="leading" secondItem="WcQ-fW-JHS" secondAttribute="trailing" constant="2" id="JUO-9n-deU"/>
+                        <constraint firstItem="WcQ-fW-JHS" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="top" constant="27" id="NlY-FK-Rbm"/>
+                        <constraint firstAttribute="bottom" secondItem="bkN-s0-JSJ" secondAttribute="bottom" constant="7" id="Uew-67-8CJ"/>
+                        <constraint firstAttribute="trailing" secondItem="bkN-s0-JSJ" secondAttribute="trailing" constant="20" id="k9G-Pp-j5U"/>
+                        <constraint firstItem="WcQ-fW-JHS" firstAttribute="leading" secondItem="pgt-ON-nkr" secondAttribute="leading" constant="20" id="rFy-qi-BFH"/>
+                    </constraints>
+                </view>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Eth-sw-4ZK">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="KBR-sc-2wc">
+                        <size key="itemSize" width="104" height="104"/>
+                        <size key="headerReferenceSize" width="0.0" height="4"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells>
+                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="hBx-be-D6i">
+                            <rect key="frame" x="0.0" y="4" width="104" height="104"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </collectionViewCell>
+                    </cells>
+                    <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ODMCombinationPickerViewController" id="5Hb-tg-wMt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="4"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </collectionReusableView>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="kDb-AU-Fn5"/>
+                        <outlet property="delegate" destination="-1" id="LaS-JE-MtX"/>
+                    </connections>
+                </collectionView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Eth-sw-4ZK" secondAttribute="trailing" id="FN3-5J-tzw"/>
+                <constraint firstItem="Eth-sw-4ZK" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="bottom" id="NaZ-Zh-QWP"/>
+                <constraint firstItem="Eth-sw-4ZK" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="bottom" id="hof-Ox-YTR"/>
+                <constraint firstItem="pgt-ON-nkr" firstAttribute="leading" secondItem="zjg-3h-buS" secondAttribute="leading" id="lSK-iu-eXg"/>
+                <constraint firstItem="pgt-ON-nkr" firstAttribute="top" secondItem="zjg-3h-buS" secondAttribute="top" id="m9Z-eJ-AJZ"/>
+                <constraint firstItem="Eth-sw-4ZK" firstAttribute="leading" secondItem="zjg-3h-buS" secondAttribute="leading" id="oeW-i1-PDS"/>
+                <constraint firstAttribute="bottom" secondItem="Eth-sw-4ZK" secondAttribute="bottom" id="pbE-0M-Qcx"/>
+                <constraint firstAttribute="trailing" secondItem="pgt-ON-nkr" secondAttribute="trailing" id="sbb-WK-o5d"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

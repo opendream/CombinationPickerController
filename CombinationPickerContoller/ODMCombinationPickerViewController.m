@@ -17,6 +17,13 @@
 
 @implementation ODMCombinationPickerViewController
 
+- (id)initWithCombinationPickerNib
+{
+    self = [super initWithNibName:@"ODMCombinationPickerViewController" bundle:nil];
+
+    return self;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -42,7 +49,6 @@
                                     bundle:nil];
 
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:CellIdentifier];
-    
     
     if (self.assetsLibrary == nil) {
         _assetsLibrary = [[ALAssetsLibrary alloc] init];

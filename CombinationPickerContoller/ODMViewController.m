@@ -72,5 +72,13 @@
     
 }
 
+- (IBAction)click:(id)sender
+{
+    ODMCombinationPickerViewController *vc = [[ODMCombinationPickerViewController alloc] initWithCombinationPickerNib];
+    [vc setDelegate:self];
+
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 
 @end

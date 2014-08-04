@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		50FBC6C8F58A43428C8C5764 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E185420894B76B6F4E232 /* libPods.a */; };
 		8480B59919889B900074F0A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59819889B900074F0A1 /* Foundation.framework */; };
-		8480B59B19889B900074F0A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59A19889B900074F0A1 /* CoreGraphics.framework */; };
 		8480B59D19889B900074F0A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59C19889B900074F0A1 /* UIKit.framework */; };
 		8480B5A319889B900074F0A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8480B5A119889B900074F0A1 /* InfoPlist.strings */; };
 		8480B5A519889B900074F0A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5A419889B900074F0A1 /* main.m */; };
@@ -28,10 +27,7 @@
 		849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */; };
 		84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A0906E198B4D9E006274CF /* IconImages.xcassets */; };
 		84A09071198BCFE5006274CF /* ODMCombinationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */; };
-		84FE55961988D91E0034D932 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55951988D91E0034D932 /* OpenGLES.framework */; };
 		84FE55981988D93E0034D932 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55971988D93E0034D932 /* QuartzCore.framework */; };
-		84FE559A1988D9440034D932 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55991988D9440034D932 /* CoreMedia.framework */; };
-		84FE559C1988D94C0034D932 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE559B1988D94C0034D932 /* CoreVideo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +43,6 @@
 /* Begin PBXFileReference section */
 		8480B59519889B900074F0A1 /* CombinationPickerContoller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombinationPickerContoller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480B59819889B900074F0A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		8480B59A19889B900074F0A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8480B59C19889B900074F0A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8480B5A019889B900074F0A1 /* CombinationPickerContoller-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CombinationPickerContoller-Info.plist"; sourceTree = "<group>"; };
 		8480B5A219889B900074F0A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -72,10 +67,7 @@
 		849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCollectionViewCell.xib; sourceTree = "<group>"; };
 		84A0906E198B4D9E006274CF /* IconImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconImages.xcassets; sourceTree = "<group>"; };
 		84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCombinationPickerViewController.xib; sourceTree = "<group>"; };
-		84FE55951988D91E0034D932 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		84FE55971988D93E0034D932 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		84FE55991988D9440034D932 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		84FE559B1988D94C0034D932 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CC6A12A5F72C4FAE86216A54 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EA1E185420894B76B6F4E232 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,12 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84FE559C1988D94C0034D932 /* CoreVideo.framework in Frameworks */,
-				84FE559A1988D9440034D932 /* CoreMedia.framework in Frameworks */,
 				84FE55981988D93E0034D932 /* QuartzCore.framework in Frameworks */,
-				84FE55961988D91E0034D932 /* OpenGLES.framework in Frameworks */,
 				8480B5CF1988A02A0074F0A1 /* AssetsLibrary.framework in Frameworks */,
-				8480B59B19889B900074F0A1 /* CoreGraphics.framework in Frameworks */,
 				8480B59D19889B900074F0A1 /* UIKit.framework in Frameworks */,
 				8480B59919889B900074F0A1 /* Foundation.framework in Frameworks */,
 				50FBC6C8F58A43428C8C5764 /* libPods.a in Frameworks */,
@@ -134,13 +122,9 @@
 		8480B59719889B900074F0A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84FE559B1988D94C0034D932 /* CoreVideo.framework */,
-				84FE55991988D9440034D932 /* CoreMedia.framework */,
 				84FE55971988D93E0034D932 /* QuartzCore.framework */,
-				84FE55951988D91E0034D932 /* OpenGLES.framework */,
 				8480B5CE1988A02A0074F0A1 /* AssetsLibrary.framework */,
 				8480B59819889B900074F0A1 /* Foundation.framework */,
-				8480B59A19889B900074F0A1 /* CoreGraphics.framework */,
 				8480B59C19889B900074F0A1 /* UIKit.framework */,
 				8480B5B719889B900074F0A1 /* XCTest.framework */,
 				EA1E185420894B76B6F4E232 /* libPods.a */,

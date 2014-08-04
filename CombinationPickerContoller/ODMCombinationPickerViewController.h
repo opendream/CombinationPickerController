@@ -34,6 +34,7 @@ static NSString *CellIdentifier = @"photoCell";
 @property (nonatomic, weak) id<ODMCombinationPickerViewControllerDelegate> delegate;
 
 - (void)fadeStatusBar;
+- (id)initWithCombinationPickerNib;
 
 @end
 
