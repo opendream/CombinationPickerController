@@ -14,7 +14,6 @@
 		8480B5A519889B900074F0A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5A419889B900074F0A1 /* main.m */; };
 		8480B5A919889B900074F0A1 /* ODMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5A819889B900074F0A1 /* ODMAppDelegate.m */; };
 		8480B5AC19889B900074F0A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8480B5AA19889B900074F0A1 /* Main.storyboard */; };
-		8480B5AF19889B900074F0A1 /* ODMCombinationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */; };
 		8480B5B119889B900074F0A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8480B5B019889B900074F0A1 /* Images.xcassets */; };
 		8480B5B819889B900074F0A1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B5B719889B900074F0A1 /* XCTest.framework */; };
 		8480B5B919889B900074F0A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B59819889B900074F0A1 /* Foundation.framework */; };
@@ -23,10 +22,11 @@
 		8480B5C419889B900074F0A1 /* CombinationPickerContollerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480B5C319889B900074F0A1 /* CombinationPickerContollerTests.m */; };
 		8480B5CF1988A02A0074F0A1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8480B5CE1988A02A0074F0A1 /* AssetsLibrary.framework */; };
 		849DF4D2198A231F00EE06A4 /* ODMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DF4D1198A231F00EE06A4 /* ODMViewController.m */; };
-		849DF4D5198A2CDB00EE06A4 /* ODMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */; };
-		849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */; };
 		84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A0906E198B4D9E006274CF /* IconImages.xcassets */; };
-		84A09071198BCFE5006274CF /* ODMCombinationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */; };
+		84AED3B2198F819600486ACB /* ODMCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AED3B0198F819600486ACB /* ODMCollectionViewCell.xib */; };
+		84AED3B3198F819600486ACB /* ODMCombinationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AED3B1198F819600486ACB /* ODMCombinationPickerViewController.xib */; };
+		84AED3B8198F81A500486ACB /* ODMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AED3B5198F81A500486ACB /* ODMCollectionViewCell.m */; };
+		84AED3B9198F81A500486ACB /* ODMCombinationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AED3B7198F81A500486ACB /* ODMCombinationPickerViewController.m */; };
 		84FE55981988D93E0034D932 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FE55971988D93E0034D932 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +51,6 @@
 		8480B5A719889B900074F0A1 /* ODMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMAppDelegate.h; sourceTree = "<group>"; };
 		8480B5A819889B900074F0A1 /* ODMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ODMAppDelegate.m; sourceTree = "<group>"; };
 		8480B5AB19889B900074F0A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8480B5AD19889B900074F0A1 /* ODMCombinationPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODMCombinationPickerViewController.h; sourceTree = "<group>"; };
-		8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ODMCombinationPickerViewController.m; sourceTree = "<group>"; };
 		8480B5B019889B900074F0A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8480B5B619889B900074F0A1 /* CombinationPickerContollerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombinationPickerContollerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480B5B719889B900074F0A1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -62,11 +60,13 @@
 		8480B5CE1988A02A0074F0A1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		849DF4D0198A231F00EE06A4 /* ODMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODMViewController.h; sourceTree = "<group>"; };
 		849DF4D1198A231F00EE06A4 /* ODMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODMViewController.m; sourceTree = "<group>"; };
-		849DF4D3198A2CDB00EE06A4 /* ODMCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODMCollectionViewCell.h; sourceTree = "<group>"; };
-		849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODMCollectionViewCell.m; sourceTree = "<group>"; };
-		849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCollectionViewCell.xib; sourceTree = "<group>"; };
 		84A0906E198B4D9E006274CF /* IconImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconImages.xcassets; sourceTree = "<group>"; };
-		84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ODMCombinationPickerViewController.xib; sourceTree = "<group>"; };
+		84AED3B0198F819600486ACB /* ODMCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ODMCollectionViewCell.xib; path = Xib/ODMCollectionViewCell.xib; sourceTree = "<group>"; };
+		84AED3B1198F819600486ACB /* ODMCombinationPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ODMCombinationPickerViewController.xib; path = Xib/ODMCombinationPickerViewController.xib; sourceTree = "<group>"; };
+		84AED3B4198F81A500486ACB /* ODMCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ODMCollectionViewCell.h; path = Classes/ODMCollectionViewCell.h; sourceTree = "<group>"; };
+		84AED3B5198F81A500486ACB /* ODMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ODMCollectionViewCell.m; path = Classes/ODMCollectionViewCell.m; sourceTree = "<group>"; };
+		84AED3B6198F81A500486ACB /* ODMCombinationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ODMCombinationPickerViewController.h; path = Classes/ODMCombinationPickerViewController.h; sourceTree = "<group>"; };
+		84AED3B7198F81A500486ACB /* ODMCombinationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ODMCombinationPickerViewController.m; path = Classes/ODMCombinationPickerViewController.m; sourceTree = "<group>"; };
 		84FE55971988D93E0034D932 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CC6A12A5F72C4FAE86216A54 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EA1E185420894B76B6F4E232 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,17 +135,13 @@
 		8480B59E19889B900074F0A1 /* CombinationPickerContoller */ = {
 			isa = PBXGroup;
 			children = (
+				84AED3AF198F817D00486ACB /* Xib */,
+				84AED3AE198F817100486ACB /* Classes */,
 				8480B5A719889B900074F0A1 /* ODMAppDelegate.h */,
 				8480B5A819889B900074F0A1 /* ODMAppDelegate.m */,
 				8480B5AA19889B900074F0A1 /* Main.storyboard */,
 				849DF4D0198A231F00EE06A4 /* ODMViewController.h */,
 				849DF4D1198A231F00EE06A4 /* ODMViewController.m */,
-				8480B5AD19889B900074F0A1 /* ODMCombinationPickerViewController.h */,
-				8480B5AE19889B900074F0A1 /* ODMCombinationPickerViewController.m */,
-				84A09070198BCFE5006274CF /* ODMCombinationPickerViewController.xib */,
-				849DF4D3198A2CDB00EE06A4 /* ODMCollectionViewCell.h */,
-				849DF4D4198A2CDB00EE06A4 /* ODMCollectionViewCell.m */,
-				849DF4D6198A313D00EE06A4 /* ODMCollectionViewCell.xib */,
 				8480B5B019889B900074F0A1 /* Images.xcassets */,
 				8480B59F19889B900074F0A1 /* Supporting Files */,
 			);
@@ -195,6 +191,26 @@
 				84A0906E198B4D9E006274CF /* IconImages.xcassets */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		84AED3AE198F817100486ACB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84AED3B4198F81A500486ACB /* ODMCollectionViewCell.h */,
+				84AED3B5198F81A500486ACB /* ODMCollectionViewCell.m */,
+				84AED3B6198F81A500486ACB /* ODMCombinationPickerViewController.h */,
+				84AED3B7198F81A500486ACB /* ODMCombinationPickerViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		84AED3AF198F817D00486ACB /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				84AED3B0198F819600486ACB /* ODMCollectionViewCell.xib */,
+				84AED3B1198F819600486ACB /* ODMCombinationPickerViewController.xib */,
+			);
+			name = Xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +292,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849DF4D7198A313D00EE06A4 /* ODMCollectionViewCell.xib in Resources */,
-				84A09071198BCFE5006274CF /* ODMCombinationPickerViewController.xib in Resources */,
 				84A0906F198B4D9E006274CF /* IconImages.xcassets in Resources */,
+				84AED3B3198F819600486ACB /* ODMCombinationPickerViewController.xib in Resources */,
+				84AED3B2198F819600486ACB /* ODMCollectionViewCell.xib in Resources */,
 				8480B5B119889B900074F0A1 /* Images.xcassets in Resources */,
 				8480B5A319889B900074F0A1 /* InfoPlist.strings in Resources */,
 				8480B5AC19889B900074F0A1 /* Main.storyboard in Resources */,
@@ -334,10 +350,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8480B5A519889B900074F0A1 /* main.m in Sources */,
+				84AED3B8198F81A500486ACB /* ODMCollectionViewCell.m in Sources */,
+				84AED3B9198F81A500486ACB /* ODMCombinationPickerViewController.m in Sources */,
 				849DF4D2198A231F00EE06A4 /* ODMViewController.m in Sources */,
-				8480B5AF19889B900074F0A1 /* ODMCombinationPickerViewController.m in Sources */,
 				8480B5A919889B900074F0A1 /* ODMAppDelegate.m in Sources */,
-				849DF4D5198A2CDB00EE06A4 /* ODMCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
