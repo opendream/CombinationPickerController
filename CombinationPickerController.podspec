@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author    = "Opendream"
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/opendream/CombinationPickerController.git", :tag => "0.0.3" }
-  s.source_files  = 'CombinationPickerContoller', 'CombinationPickerContoller/Classes/**/*.{h,m}'  
+  s.source_files  = 'CombinationPickerContoller/Classes/**/*.{h,m}'  
   s.resources = ["**/*.png", "**/*.xib"]
   s.frameworks = "QuartzCore", "AssetsLibrary", "Foundation", "UIKit"
   s.requires_arc = true
