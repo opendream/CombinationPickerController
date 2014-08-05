@@ -19,7 +19,7 @@
 - (id)initWithCombinationPickerNib
 {
     self = [super initWithNibName:@"ODMCombinationPickerViewController" bundle:nil];
-
+    
     return self;
 }
 
@@ -29,24 +29,14 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController setToolbarHidden:YES animated:NO];
-
     if (self.cameraImage == nil) {
         self.cameraImage = [UIImage imageNamed:@"camera-icon"];
     }
-
-    if (!previousBarStyle) {
-        previousBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-    }
-
-    [self fadeStatusBar];
-    [self setLightStatusBar];
-    
     
     UINib *cellNib = [UINib nibWithNibName:
                       NSStringFromClass([ODMCollectionViewCell class])
                                     bundle:nil];
-
+    
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:CellIdentifier];
     
     if (self.assetsLibrary == nil) {
@@ -111,6 +101,32 @@
     [self checkDoneButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (!previousBarStyle) {
+        previousBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+    }
+    
+    isHideNavigationbar = self.navigationController.isNavigationBarHidden;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [self fadeStatusBar];
+    [self setLightStatusBar];
+    
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self reStoreNavigationBar];
+    [self fadeStatusBar];
+    [self setBackStatusBar];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -127,7 +143,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ODMCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-
+    
     ALAsset *asset;
     CGImageRef thumbnailImageRef;
     UIImage *thumbnail;
@@ -150,17 +166,17 @@
     BOOL isDeselectedShouldAnimate = currentSelectedIndex == nil && [indexPath isEqual:previousSelectedIndex];
     
     [cell setHightlightBackground:isSelected withAimate:isDeselectedShouldAnimate];
-
+    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0 && [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
-            
+        
         previousSelectedIndex = nil;
         currentSelectedIndex = nil;
-
+        
         if (self.cameraController != nil) {
             
             [self presentViewController:self.cameraController animated:YES completion:NULL];
@@ -175,7 +191,7 @@
         }
         
     } else {
-
+        
         previousSelectedIndex = currentSelectedIndex;
         
         if ([currentSelectedIndex isEqual:indexPath] ) {
@@ -216,7 +232,7 @@
             }
             
             [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
-
+            
             [self addImageFirstRow];
             
             [self.collectionView reloadData];
@@ -241,7 +257,7 @@
 - (void)setNavigationTitle:(NSString *)title
 {
     [self.navagationTitleButton setTitle:[NSString stringWithFormat:@"%@ ▾", title] forState:UIControlStateNormal];
-
+    
 }
 
 - (void)checkDoneButton
@@ -283,9 +299,6 @@
 {
     if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
-        [self fadeStatusBar];
-        [self setBackStatusBar];
-
         [self.delegate imagePickerController:self didFinishPickingAsset:self.assets[currentSelectedIndex.row]];
     }
 }
@@ -294,9 +307,6 @@
 {
     if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
-        [self fadeStatusBar];
-        [self setBackStatusBar];
-
         UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         [library writeImageToSavedPhotosAlbum:originImage.CGImage
@@ -305,7 +315,7 @@
                                   
                                   [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
                                       [self.delegate imagePickerController:self didFinishPickingAsset:asset];
-
+                                      
                                   } failureBlock:^(NSError *error) {
                                       
                                       NSLog(@"error couldn't get photo");
@@ -314,16 +324,12 @@
                                   
                               }];
     }
-
+    
 }
 
 - (IBAction)cancle:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
-
-        [self fadeStatusBar];
-        [self setBackStatusBar];
-        
         [self.delegate imagePickerControllerDidCancel:self];
     }
 }
@@ -334,7 +340,8 @@
 {
     if (![[UIApplication sharedApplication] isStatusBarHidden]) {
         
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        // need to animate
+        //        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
 }
@@ -347,8 +354,17 @@
 
 - (void)setBackStatusBar
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
-    [self setNeedsStatusBarAppearanceUpdate];
+    if (![[UIApplication sharedApplication] isStatusBarHidden]) {
+        
+        [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
+        [self setNeedsStatusBarAppearanceUpdate];
+        
+    }
+}
+
+- (void)reStoreNavigationBar
+{
+    [self.navigationController setNavigationBarHidden:isHideNavigationbar animated:NO];
 }
 
 @end
