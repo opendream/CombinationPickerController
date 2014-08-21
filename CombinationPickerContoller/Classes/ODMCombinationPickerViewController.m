@@ -78,9 +78,14 @@
             [self.groups addObject:group];
             
             self.assetsGroup = [self.groups firstObject];
-            [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
             
-            [self addImageFirstRow];
+            if (self.assets.count == 0) {
+                
+                [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
+                
+                [self addImageFirstRow];
+                
+            }
             
             [self setNavigationTitle:[[self.groups firstObject] valueForProperty:ALAssetsGroupPropertyName]];
             
