@@ -184,8 +184,19 @@
         
         if (self.cameraController != nil) {
             
-            [self presentViewController:self.cameraController animated:YES completion:NULL];
+            id delegate;
+            if ([self.cameraController valueForKey:@"delegate"]) {
+                delegate = [self.cameraController valueForKey:@"delegate"];
+            }
             
+            NSData *tempArchiveViewController = [NSKeyedArchiver archivedDataWithRootObject:self.cameraController];
+            UIViewController *cameraVC = [NSKeyedUnarchiver unarchiveObjectWithData:tempArchiveViewController];
+            
+            if (delegate && delegate != nil) {
+                [cameraVC setValue:delegate forKey:@"delegate"];
+            }
+            
+            [self presentViewController:cameraVC animated:YES completion:NULL];
         } else {
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
