@@ -343,7 +343,7 @@
     
 }
 
-- (IBAction)cancle:(id)sender
+- (IBAction)cancel:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
         [self.delegate imagePickerControllerDidCancel:self];
