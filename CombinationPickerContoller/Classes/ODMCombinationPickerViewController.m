@@ -74,21 +74,26 @@
         [group setAssetsFilter:onlyPhotosFilter];
         if ([group numberOfAssets] > 0)
         {
-            
-            [self.groups addObject:group];
-            
-            self.assetsGroup = [self.groups firstObject];
-            
-            if (self.assets.count == 0) {
+            if ([[group valueForProperty:ALAssetsGroupPropertyType] intValue] == ALAssetsGroupSavedPhotos) {
                 
-                [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
+                self.assetsGroup = group;
                 
-                [self addImageFirstRow];
+                if (self.assets.count == 0) {
+                    
+                    [self.assetsGroup enumerateAssetsUsingBlock:assetsEnumerationBlock];
+                    
+                    [self addImageFirstRow];
+                    
+                }
+                
+                [self setNavigationTitle:[group valueForProperty:ALAssetsGroupPropertyName]];
+                
+                [self.groups insertObject:group atIndex:0];
                 
             }
-            
-            [self setNavigationTitle:[[self.groups firstObject] valueForProperty:ALAssetsGroupPropertyName]];
-            
+            else {
+                [self.groups addObject:group];
+            }
         }
         
     };
