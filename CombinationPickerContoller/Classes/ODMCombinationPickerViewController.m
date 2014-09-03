@@ -165,7 +165,7 @@
     } else {
         
         asset = self.assets[indexPath.row];
-        thumbnailImageRef = [asset thumbnail];
+        thumbnailImageRef = [asset aspectRatioThumbnail];
         thumbnail = [UIImage imageWithCGImage:thumbnailImageRef];
         
     }

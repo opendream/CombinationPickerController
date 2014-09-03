@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5ps-oK-RLx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5ps-oK-RLx">
                         <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
