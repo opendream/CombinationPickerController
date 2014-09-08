@@ -11,6 +11,7 @@
                 <outlet property="doneButton" destination="bkN-s0-JSJ" id="6Sd-Ki-FfN"/>
                 <outlet property="navagationTitleButton" destination="NXc-j5-7LX" id="egH-Rg-DRX"/>
                 <outlet property="navigationView" destination="pgt-ON-nkr" id="CJH-1C-PWF"/>
+                <outlet property="requestPermisstionView" destination="aIM-kt-Ilv" id="jzw-5c-66r"/>
                 <outlet property="view" destination="zjg-3h-buS" id="kc3-PG-cIJ"/>
             </connections>
         </placeholder>
@@ -103,16 +104,48 @@
                         <outlet property="delegate" destination="-1" id="LaS-JE-MtX"/>
                     </connections>
                 </collectionView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIM-kt-Ilv" userLabel="View - permisstion">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Allow Photo Access" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t5-vh-gFg">
+                            <rect key="frame" x="28" y="59" width="264" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To allow photo save photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpa-MW-P0m">
+                            <rect key="frame" x="59" y="118" width="202" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please go to iOS [Setting] => [Privacy] => [Photo] set app to ON" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="279" translatesAutoresizingMaskIntoConstraints="NO" id="XWk-7A-dzF">
+                            <rect key="frame" x="21" y="155" width="279" height="117"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Eth-sw-4ZK" secondAttribute="trailing" id="FN3-5J-tzw"/>
                 <constraint firstItem="Eth-sw-4ZK" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="bottom" id="NaZ-Zh-QWP"/>
+                <constraint firstAttribute="bottom" secondItem="aIM-kt-Ilv" secondAttribute="bottom" id="Qdk-pE-Ynb"/>
+                <constraint firstItem="aIM-kt-Ilv" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="bottom" id="cv8-ev-meM"/>
                 <constraint firstItem="Eth-sw-4ZK" firstAttribute="top" secondItem="pgt-ON-nkr" secondAttribute="bottom" id="hof-Ox-YTR"/>
                 <constraint firstItem="pgt-ON-nkr" firstAttribute="leading" secondItem="zjg-3h-buS" secondAttribute="leading" id="lSK-iu-eXg"/>
                 <constraint firstItem="pgt-ON-nkr" firstAttribute="top" secondItem="zjg-3h-buS" secondAttribute="top" id="m9Z-eJ-AJZ"/>
+                <constraint firstAttribute="trailing" secondItem="aIM-kt-Ilv" secondAttribute="trailing" id="mDP-Ni-PQK"/>
                 <constraint firstItem="Eth-sw-4ZK" firstAttribute="leading" secondItem="zjg-3h-buS" secondAttribute="leading" id="oeW-i1-PDS"/>
                 <constraint firstAttribute="bottom" secondItem="Eth-sw-4ZK" secondAttribute="bottom" id="pbE-0M-Qcx"/>
+                <constraint firstItem="aIM-kt-Ilv" firstAttribute="leading" secondItem="zjg-3h-buS" secondAttribute="leading" id="rqn-sh-dCV"/>
                 <constraint firstAttribute="trailing" secondItem="pgt-ON-nkr" secondAttribute="trailing" id="sbb-WK-o5d"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

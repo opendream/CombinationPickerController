@@ -28,6 +28,7 @@ static NSString *CellIdentifier = @"photoCell";
 @property (nonatomic, strong) UIViewController *cameraController;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) IBOutlet UIView *navigationView;
+@property (nonatomic, strong) IBOutlet UIView *requestPermisstionView;
 @property (nonatomic, strong) IBOutlet UIButton *navagationTitleButton;
 @property (nonatomic, strong) IBOutlet UIButton *cancelButton;
 @property (nonatomic, strong) IBOutlet UIButton *doneButton;

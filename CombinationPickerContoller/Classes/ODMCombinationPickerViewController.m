@@ -125,6 +125,11 @@
     [self fadeStatusBar];
     [self setLightStatusBar];
     
+    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+    
+    if (status != ALAuthorizationStatusAuthorized) {
+        [self.requestPermisstionView setHidden:NO];
+    }
     
 }
 
