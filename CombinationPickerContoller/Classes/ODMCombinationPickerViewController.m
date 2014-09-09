@@ -70,6 +70,8 @@
     
     ALAssetsLibraryGroupsEnumerationResultsBlock listGroupBlock = ^(ALAssetsGroup *group, BOOL *stop) {
         
+        [self viewForAuthorizationStatus];
+        
         ALAssetsFilter *onlyPhotosFilter = [ALAssetsFilter allPhotos];
         [group setAssetsFilter:onlyPhotosFilter];
         if ([group numberOfAssets] > 0)
@@ -96,13 +98,14 @@
             }
         }
         
+        
     };
     
     // enumerate only photos
     NSUInteger groupTypes = ALAssetsGroupAlbum | ALAssetsGroupEvent | ALAssetsGroupFaces | ALAssetsGroupSavedPhotos | ALAssetsGroupPhotoStream;
     
     [self.assetsLibrary enumerateGroupsWithTypes:groupTypes usingBlock:listGroupBlock failureBlock:^(NSError *error) {
-        NSLog(@"Can not get group");
+        [self viewForAuthorizationStatus];
     }];
     
     ALAssetsFilter *onlyPhotosFilter = [ALAssetsFilter allPhotos];
@@ -125,12 +128,6 @@
     [self fadeStatusBar];
     [self setLightStatusBar];
     
-    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
-    
-    if (status != ALAuthorizationStatusAuthorized) {
-        [self.requestPermisstionView setHidden:NO];
-    }
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -146,6 +143,18 @@
 {
     [super viewDidAppear:animated];
     [self.collectionView reloadData];
+}
+
+- (void)viewForAuthorizationStatus
+{
+    ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
+    
+    if (status == ALAuthorizationStatusAuthorized || status == ALAuthorizationStatusNotDetermined) {
+        [self.requestPermisstionView setHidden:YES];
+    } else {
+        [self.requestPermisstionView setHidden:NO];
+    }
+    
 }
 
 #pragma mark - UICollectionViewDelegate
