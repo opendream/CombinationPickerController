@@ -174,6 +174,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ODMCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.selectionBorderWidth = self.selectionBorderWidth;
+    cell.selectionHighlightColor = self.selectionHighlightColor;
     
     ALAsset *asset;
     CGImageRef thumbnailImageRef;

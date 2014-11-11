@@ -34,6 +34,8 @@ static NSString *CellIdentifier = @"photoCell";
 @property (nonatomic, strong) IBOutlet UIButton *cancelButton;
 @property (nonatomic, strong) IBOutlet UIButton *doneButton;
 @property (nonatomic, assign) BOOL showCameraButton; // default YES
+@property (nonatomic, strong) UIColor *selectionHighlightColor;
+@property (nonatomic, assign) CGFloat selectionBorderWidth;
 
 @property (nonatomic, copy) void (^didFinishPickingAsset)(ODMCombinationPickerViewController *,ALAsset *);
 @property (nonatomic, copy) void (^didCancel)(ODMCombinationPickerViewController *);

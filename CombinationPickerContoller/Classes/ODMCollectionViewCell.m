@@ -16,6 +16,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.selectionHighlightColor = [UIColor greenColor];
+        self.selectionBorderWidth = 1.0f;
     }
     return self;
 }
@@ -69,9 +71,8 @@
 
 - (void)setHightlightBackground
 {
-
-    self.bgView.layer.borderWidth = 1.0f;
-    self.bgView.layer.borderColor = [UIColor greenColor].CGColor;
+    self.bgView.layer.borderWidth = self.selectionBorderWidth;
+    self.bgView.layer.borderColor = self.selectionHighlightColor.CGColor;
     
     [UIView animateWithDuration:0.2f
                           delay:0.0f
@@ -81,18 +82,16 @@
                          [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
                          
                          [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
-
+                         
                      }
                      completion:^(BOOL finished){
                          
                          [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
                          
                          [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
-
+                         
                      }
      ];
-    
-    
 }
 
 @end
