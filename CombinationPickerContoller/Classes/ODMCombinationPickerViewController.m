@@ -350,30 +350,37 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 {
-    if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
-        
-        UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        [library writeImageToSavedPhotosAlbum:originImage.CGImage
-                                     metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
-                              completionBlock:^(NSURL *assetURL, NSError *error) {
-                                  
-                                  [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+    UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library writeImageToSavedPhotosAlbum:originImage.CGImage
+                                 metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+                          completionBlock:^(NSURL *assetURL, NSError *error) {
+                              
+                              [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+
+                                  if(self.didFinishPickingAsset) {
+                                      self.didFinishPickingAsset(self, asset);
+                                  }
+
+                                  if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
                                       [self.delegate imagePickerController:self didFinishPickingAsset:asset];
-                                      
-                                  } failureBlock:^(NSError *error) {
-                                      
-                                      NSLog(@"error couldn't get photo");
-                                      
-                                  }];
+                                  }
+                                  
+                              } failureBlock:^(NSError *error) {
+                                  
+                                  NSLog(@"error couldn't get photo");
                                   
                               }];
-    }
-    
+                              
+                          }];
 }
 
 - (IBAction)cancel:(id)sender
 {
+    if(self.didCancel) {
+        self.didCancel(self);
+    }
+
     if ([self.delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
         [self.delegate imagePickerControllerDidCancel:self];
     }

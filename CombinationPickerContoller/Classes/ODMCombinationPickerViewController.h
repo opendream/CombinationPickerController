@@ -34,6 +34,9 @@ static NSString *CellIdentifier = @"photoCell";
 @property (nonatomic, strong) IBOutlet UIButton *doneButton;
 @property (nonatomic, assign) BOOL showCameraButton; // default YES
 
+@property (nonatomic, copy) void (^didFinishPickingAsset)(ODMCombinationPickerViewController *,ALAsset *);
+@property (nonatomic, copy) void (^didCancel)(ODMCombinationPickerViewController *);
+
 @property (nonatomic, weak) id<ODMCombinationPickerViewControllerDelegate> delegate;
 
 - (void)fadeStatusBar;
