@@ -18,8 +18,19 @@
         // Initialization code
         self.selectionHighlightColor = [UIColor greenColor];
         self.selectionBorderWidth = 1.0f;
+        [self.imageView setClipsToBounds:YES];
+        [self.bgView setClipsToBounds:YES];
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.selectionHighlightColor = [UIColor greenColor];
+    self.selectionBorderWidth = 1.0f;
+    [self.imageView setClipsToBounds:YES];
+    [self.bgView setClipsToBounds:YES];
 }
 
 - (void)setHightlightBackground:(BOOL)isSelected withAimate:(BOOL)animate
