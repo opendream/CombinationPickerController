@@ -342,6 +342,10 @@
 
 - (IBAction)done:(id)sender
 {
+    if(self.didFinishPickingAsset) {
+        self.didFinishPickingAsset(self, self.assets[currentSelectedIndex.row]);
+    }
+
     if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
         [self.delegate imagePickerController:self didFinishPickingAsset:self.assets[currentSelectedIndex.row]];
