@@ -16,6 +16,7 @@ static NSString *CellIdentifier = @"photoCell";
 @interface ODMCombinationPickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     BOOL isHideNavigationbar;
+    BOOL previousStatusBarIsHidden;
     UIStatusBarStyle previousBarStyle;
     NSIndexPath *currentSelectedIndex;
     NSIndexPath *previousSelectedIndex;

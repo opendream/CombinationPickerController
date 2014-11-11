@@ -395,10 +395,10 @@
 - (void)fadeStatusBar
 {
     if ([[UIApplication sharedApplication] isStatusBarHidden]) {
-        
+        previousStatusBarIsHidden = YES;
         // need to animate
         //        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     }
 }
 
@@ -412,6 +412,7 @@
 {
     if (![[UIApplication sharedApplication] isStatusBarHidden]) {
         
+        if(previousStatusBarIsHidden) [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
         [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
         [self setNeedsStatusBarAppearanceUpdate];
         
