@@ -19,7 +19,14 @@
 - (id)initWithCombinationPickerNib
 {
     self = [super initWithNibName:@"ODMCombinationPickerViewController" bundle:nil];
-    
+    self.showCameraButton = YES;
+    return self;
+}
+
+- (id)initWithCombinationPickerNibShowingCameraButton:(BOOL)showCameraButton
+{
+    self = [super initWithNibName:@"ODMCombinationPickerViewController" bundle:nil];
+    self.showCameraButton = showCameraButton;
     return self;
 }
 
@@ -285,7 +292,7 @@
 
 - (void)addImageFirstRow
 {
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] && self.showCameraButton == YES) {
         
         [self.assets insertObject:self.cameraImage atIndex:0];
         
