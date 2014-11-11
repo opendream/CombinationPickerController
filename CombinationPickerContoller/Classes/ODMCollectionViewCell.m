@@ -49,16 +49,16 @@
                             options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              
-                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
+                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+self.selectionBorderWidth, self.imageView.frame.origin.y+self.selectionBorderWidth, self.imageView.frame.size.width-(self.selectionBorderWidth*2), self.imageView.frame.size.height-(self.selectionBorderWidth*2))];
                              
-                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
+                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+self.selectionBorderWidth, self.bgView.frame.origin.y+self.selectionBorderWidth, self.bgView.frame.size.width-(self.selectionBorderWidth*2), self.bgView.frame.size.height-(self.selectionBorderWidth*2))];
                              
                          }
                          completion:^(BOOL finished){
                              
-                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
+                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-self.selectionBorderWidth, self.imageView.frame.origin.y-self.selectionBorderWidth, self.imageView.frame.size.width+(self.selectionBorderWidth*2), self.imageView.frame.size.height+(self.selectionBorderWidth*2))];
                              
-                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
+                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-self.selectionBorderWidth, self.bgView.frame.origin.y-self.selectionBorderWidth, self.bgView.frame.size.width+(self.selectionBorderWidth*2), self.bgView.frame.size.height+(self.selectionBorderWidth*2))];
                              
                          }
          ];
@@ -79,16 +79,16 @@
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          
-                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
+                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+self.selectionBorderWidth, self.imageView.frame.origin.y+self.selectionBorderWidth, self.imageView.frame.size.width-(self.selectionBorderWidth*2), self.imageView.frame.size.height-(self.selectionBorderWidth*2))];
                          
-                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
+                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+self.selectionBorderWidth, self.bgView.frame.origin.y+self.selectionBorderWidth, self.bgView.frame.size.width-(self.selectionBorderWidth*2), self.bgView.frame.size.height-(self.selectionBorderWidth*2))];
                          
                      }
                      completion:^(BOOL finished){
                          
-                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
+                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-self.selectionBorderWidth, self.imageView.frame.origin.y-self.selectionBorderWidth, self.imageView.frame.size.width+(self.selectionBorderWidth*2), self.imageView.frame.size.height+(self.selectionBorderWidth*2))];
                          
-                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
+                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-self.selectionBorderWidth, self.bgView.frame.origin.y-self.selectionBorderWidth, self.bgView.frame.size.width+(self.selectionBorderWidth*2), self.bgView.frame.size.height+(self.selectionBorderWidth*2))];
                          
                      }
      ];
