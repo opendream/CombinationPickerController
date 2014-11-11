@@ -394,7 +394,7 @@
 
 - (void)fadeStatusBar
 {
-    if (![[UIApplication sharedApplication] isStatusBarHidden]) {
+    if ([[UIApplication sharedApplication] isStatusBarHidden]) {
         
         // need to animate
         //        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
