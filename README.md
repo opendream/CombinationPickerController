@@ -12,6 +12,7 @@ Use cocoapods
     pod 'CombinationPickerController'
 
 How to use
+==
 
 Add delegate 
 
@@ -30,6 +31,11 @@ Delegate function
 
     - (void)imagePickerControllerDidCancel:(ODMCombinationPickerViewController *)picker;
 
+
+Custom border width and color    
+   
+    [vc setSelectionBorderWidth:2]; //default 1
+    [vc setSelectionHighlightColor:[UIColor redColor]]; //default green
 
 Custom camera controller
 
