@@ -16,8 +16,21 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.selectionHighlightColor = [UIColor greenColor];
+        self.selectionBorderWidth = 1.0f;
+        [self.imageView setClipsToBounds:YES];
+        [self.bgView setClipsToBounds:YES];
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.selectionHighlightColor = [UIColor greenColor];
+    self.selectionBorderWidth = 1.0f;
+    [self.imageView setClipsToBounds:YES];
+    [self.bgView setClipsToBounds:YES];
 }
 
 - (void)setHightlightBackground:(BOOL)isSelected withAimate:(BOOL)animate
@@ -47,16 +60,16 @@
                             options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              
-                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
+                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+self.selectionBorderWidth, self.imageView.frame.origin.y+self.selectionBorderWidth, self.imageView.frame.size.width-(self.selectionBorderWidth*2), self.imageView.frame.size.height-(self.selectionBorderWidth*2))];
                              
-                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
+                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+self.selectionBorderWidth, self.bgView.frame.origin.y+self.selectionBorderWidth, self.bgView.frame.size.width-(self.selectionBorderWidth*2), self.bgView.frame.size.height-(self.selectionBorderWidth*2))];
                              
                          }
                          completion:^(BOOL finished){
                              
-                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
+                             [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-self.selectionBorderWidth, self.imageView.frame.origin.y-self.selectionBorderWidth, self.imageView.frame.size.width+(self.selectionBorderWidth*2), self.imageView.frame.size.height+(self.selectionBorderWidth*2))];
                              
-                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
+                             [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-self.selectionBorderWidth, self.bgView.frame.origin.y-self.selectionBorderWidth, self.bgView.frame.size.width+(self.selectionBorderWidth*2), self.bgView.frame.size.height+(self.selectionBorderWidth*2))];
                              
                          }
          ];
@@ -69,30 +82,27 @@
 
 - (void)setHightlightBackground
 {
-
-    self.bgView.layer.borderWidth = 1.0f;
-    self.bgView.layer.borderColor = [UIColor greenColor].CGColor;
+    self.bgView.layer.borderWidth = self.selectionBorderWidth;
+    self.bgView.layer.borderColor = self.selectionHighlightColor.CGColor;
     
     [UIView animateWithDuration:0.2f
                           delay:0.0f
                         options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          
-                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+1, self.imageView.frame.origin.y+1, self.imageView.frame.size.width-2, self.imageView.frame.size.height-2)];
+                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x+self.selectionBorderWidth, self.imageView.frame.origin.y+self.selectionBorderWidth, self.imageView.frame.size.width-(self.selectionBorderWidth*2), self.imageView.frame.size.height-(self.selectionBorderWidth*2))];
                          
-                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+1, self.bgView.frame.origin.y+1, self.bgView.frame.size.width-2, self.bgView.frame.size.height-2)];
-
+                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x+self.selectionBorderWidth, self.bgView.frame.origin.y+self.selectionBorderWidth, self.bgView.frame.size.width-(self.selectionBorderWidth*2), self.bgView.frame.size.height-(self.selectionBorderWidth*2))];
+                         
                      }
                      completion:^(BOOL finished){
                          
-                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-1, self.imageView.frame.origin.y-1, self.imageView.frame.size.width+2, self.imageView.frame.size.height+2)];
+                         [self.imageView setFrame:CGRectMake(self.imageView.frame.origin.x-self.selectionBorderWidth, self.imageView.frame.origin.y-self.selectionBorderWidth, self.imageView.frame.size.width+(self.selectionBorderWidth*2), self.imageView.frame.size.height+(self.selectionBorderWidth*2))];
                          
-                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-1, self.bgView.frame.origin.y-1, self.bgView.frame.size.width+2, self.bgView.frame.size.height+2)];
-
+                         [self.bgView setFrame:CGRectMake(self.bgView.frame.origin.x-self.selectionBorderWidth, self.bgView.frame.origin.y-self.selectionBorderWidth, self.bgView.frame.size.width+(self.selectionBorderWidth*2), self.bgView.frame.size.height+(self.selectionBorderWidth*2))];
+                         
                      }
      ];
-    
-    
 }
 
 @end

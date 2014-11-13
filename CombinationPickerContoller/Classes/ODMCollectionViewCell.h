@@ -13,6 +13,8 @@
 @property (nonatomic, strong) IBOutlet UIView *bgView;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) UIColor *selectionHighlightColor;
+@property (nonatomic, assign) CGFloat selectionBorderWidth;
 
 - (void)setHightlightBackground:(BOOL)isSelected withAimate:(BOOL)animate;
 - (void)setNormalBackground:(BOOL)animate;

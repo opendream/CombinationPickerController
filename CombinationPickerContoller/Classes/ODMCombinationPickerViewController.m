@@ -19,7 +19,14 @@
 - (id)initWithCombinationPickerNib
 {
     self = [super initWithNibName:@"ODMCombinationPickerViewController" bundle:nil];
-    
+    self.showCameraButton = YES;
+    return self;
+}
+
+- (id)initWithCombinationPickerNibShowingCameraButton:(BOOL)showCameraButton
+{
+    self = [super initWithNibName:@"ODMCombinationPickerViewController" bundle:nil];
+    self.showCameraButton = showCameraButton;
     return self;
 }
 
@@ -102,7 +109,7 @@
     };
     
     // enumerate only photos
-    NSUInteger groupTypes = ALAssetsGroupAlbum | ALAssetsGroupEvent | ALAssetsGroupFaces | ALAssetsGroupSavedPhotos | ALAssetsGroupPhotoStream;
+    NSUInteger groupTypes = ALAssetsGroupAll;
     
     [self.assetsLibrary enumerateGroupsWithTypes:groupTypes usingBlock:listGroupBlock failureBlock:^(NSError *error) {
         [self viewForAuthorizationStatus];
@@ -167,6 +174,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ODMCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.selectionBorderWidth = self.selectionBorderWidth;
+    cell.selectionHighlightColor = self.selectionHighlightColor;
     
     ALAsset *asset;
     CGImageRef thumbnailImageRef;
@@ -199,7 +208,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0 && [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+    if (indexPath.row == 0 && [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] && self.showCameraButton == YES) {
         
         previousSelectedIndex = nil;
         currentSelectedIndex = nil;
@@ -285,7 +294,7 @@
 
 - (void)addImageFirstRow
 {
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] && self.showCameraButton == YES) {
         
         [self.assets insertObject:self.cameraImage atIndex:0];
         
@@ -335,6 +344,10 @@
 
 - (IBAction)done:(id)sender
 {
+    if(self.didFinishPickingAsset) {
+        self.didFinishPickingAsset(self, self.assets[currentSelectedIndex.row]);
+    }
+
     if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
         
         [self.delegate imagePickerController:self didFinishPickingAsset:self.assets[currentSelectedIndex.row]];
@@ -343,30 +356,37 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
 {
-    if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
-        
-        UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        [library writeImageToSavedPhotosAlbum:originImage.CGImage
-                                     metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
-                              completionBlock:^(NSURL *assetURL, NSError *error) {
-                                  
-                                  [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+    UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library writeImageToSavedPhotosAlbum:originImage.CGImage
+                                 metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+                          completionBlock:^(NSURL *assetURL, NSError *error) {
+                              
+                              [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+
+                                  if(self.didFinishPickingAsset) {
+                                      self.didFinishPickingAsset(self, asset);
+                                  }
+
+                                  if ([self.delegate respondsToSelector:@selector(imagePickerController:didFinishPickingAsset:)]) {
                                       [self.delegate imagePickerController:self didFinishPickingAsset:asset];
-                                      
-                                  } failureBlock:^(NSError *error) {
-                                      
-                                      NSLog(@"error couldn't get photo");
-                                      
-                                  }];
+                                  }
+                                  
+                              } failureBlock:^(NSError *error) {
+                                  
+                                  NSLog(@"error couldn't get photo");
                                   
                               }];
-    }
-    
+                              
+                          }];
 }
 
 - (IBAction)cancel:(id)sender
 {
+    if(self.didCancel) {
+        self.didCancel(self);
+    }
+
     if ([self.delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
         [self.delegate imagePickerControllerDidCancel:self];
     }
@@ -376,11 +396,11 @@
 
 - (void)fadeStatusBar
 {
-    if (![[UIApplication sharedApplication] isStatusBarHidden]) {
-        
+    if ([[UIApplication sharedApplication] isStatusBarHidden]) {
+        previousStatusBarIsHidden = YES;
         // need to animate
         //        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     }
 }
 
@@ -394,6 +414,7 @@
 {
     if (![[UIApplication sharedApplication] isStatusBarHidden]) {
         
+        if(previousStatusBarIsHidden) [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
         [[UIApplication sharedApplication] setStatusBarStyle:previousBarStyle];
         [self setNeedsStatusBarAppearanceUpdate];
         
